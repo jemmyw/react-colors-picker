@@ -40,6 +40,16 @@ export default class Picker extends React.Component {
     });
   }
 
+  componentWillReceiveProps(nextProps) {
+    var customColor = (nextProps.customColor !== this.props.customColor) ? nextProps.customColor : this.state.customColor;
+
+    this.setState({
+      style: nextProps.style,
+      visible: nextProps.visible,
+      customColor: customColor
+    });
+  }
+
   componentDidUpdate(prevProps, prevState) {
     if (!prevState.visible) {
       // 如果从 false 切换过来则聚焦
